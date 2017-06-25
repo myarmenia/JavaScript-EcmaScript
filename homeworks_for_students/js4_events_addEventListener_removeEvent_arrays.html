@@ -1,0 +1,151 @@
+﻿<html>
+<head>
+<title>JS4</title>
+<style>
+body{
+overflow: hidden;
+background: url('js4/back.jpg')
+}
+
+@keyframes fly {
+    10% {top: 0px; left: 1200px}
+    65% {top: 150px; left: 300px}
+    100% {top: -100px; left: 200px}
+}
+@keyframes disp {
+     0% {top: -200px}
+     90% {top: -200px}
+    100% {top: 20px}
+}
+@keyframes disp1 {
+     0% {bottom: -100px}
+     90% {bottom: -100px}
+    100% {bottom: 20px}
+}
+@keyframes fly1 {
+    10% {top: 100px; left: -150px}
+    42% {top: 110px; left: 120px}
+    52% {top: 170px; left: 700px}
+    100% {top: -100px; left: 2000px}
+}
+@keyframes fly2 {
+    10% {bottom: 0; left: -150px}
+    100% {bottom: 0; left: 1200px}
+}
+@keyframes fly3 {
+    0% {top: 0; left: 0; width: 0}
+    100% {top: 0; left: 0;width: 300px}
+   }
+#strok{
+	width: 150px;
+	animation: fly 2.5s 1 ease-in-out;
+	position: absolute;
+	left: -1000px;
+	top: -1000px
+}
+#baze{
+	width: 150px;
+	animation: fly1 8s 1 ease-in-out;
+	position: absolute;
+	left: -1000;
+	bottom: -1000
+}
+#man{
+	width: 200px;
+	animation: fly2 4s 1 ease-in-out;
+	position: absolute;
+	left: -150px;
+	bottom: 0
+}
+#zoomingdove{
+	width: 200px;
+	animation: fly3 4s 1 ease-in;
+	position: absolute;
+	left: -350px;
+	top: -350px
+}
+
+#result{
+	width: 58px;
+	height: 100px;
+	background: Cornsilk ;
+	position: absolute;
+	left:450px;
+	font-size: 85px;
+	padding-left: 2%;
+	position absolute;
+	animation: disp 7s 1 ease-in
+}
+#rcount{
+	width: 58px;
+	height: 100px;
+	background: Cornsilk ;
+	font-size: 85px;
+}
+#result1{
+	width: 448px;
+	height: 100px;
+	background: Cornsilk ;
+	position: absolute;
+	left:250px;
+	bottom: 0;
+	font-size: 85px;
+	padding-left: 2%;
+	animation: disp1 7s 1 ease-in
+}
+.cent{
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<div id="result">
+<div id=rcount></div>
+<button id=res>Show</button>
+</div>
+
+<div id="result1"></div>
+<img src="js4/stork.gif" id="strok" />
+<img src="js4/baze.gif" id="baze" />
+<img src="js4/man.gif" id="man" />
+<img src="js4/zoomingdove.gif" id="zoomingdove" />
+<script>
+var arr= [];
+function f1(e1){
+var k1 = {
+	anun: e1.target.id,
+	url: e1.target.src
+}
+	arr.push(k1);
+	console.log(arr)
+	
+	var a1=e1.target.id;
+	console.log(a1)
+	e1.target.id == 'strok' ? strok.removeEventListener("click", f1) : e1.target.id == 'baze' ? baze.removeEventListener("click", f1) : 
+	e1.target.id == 'man' ? man.removeEventListener("click", f1) :
+	e1.target.id == 'zoomingdove' ? zoomingdove.removeEventListener("click", f1) :	null
+	rcount.innerHTML = arr.length;
+}
+var i1=0;
+function res1(){
+if(typeof arr[i1] != 'undefined'){
+	var elem = document.createElement("img");
+	elem.setAttribute("src", arr[i1].url);
+	elem.setAttribute("height", "100");
+	elem.setAttribute("width", "100");
+	elem.setAttribute("class", "cent");
+	elem.setAttribute("title", arr[i1].anun);
+	result1.appendChild(elem);
+	i1+=1;
+	res1();
+}
+
+}
+strok.addEventListener("click", f1)
+baze.addEventListener("click", f1)
+man.addEventListener("click", f1)
+zoomingdove.addEventListener("click", f1)
+res.addEventListener("click", res1)
+</script>
+</body>
+</html>
